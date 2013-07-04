@@ -1,0 +1,37 @@
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <% if params[:action] != "password" %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  <% end %>
+  
+  <% if params[:action] != "edit" %>  
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>    
+  <% end %>
+   
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(@user), :class => 'btn' %>
+      <%= link_to ' Delete', user_path(@user), confirm: 'Are you sure you want to delete your account, no take backsies?', method: :delete, :class => 'btn float_right' %>
+    <% elsif params[:action] == "password" %>
+      <%= f.submit "Change Password", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(@user), :class => 'btn' %>      
+    <% else %>
+      <%= f.submit "Sign Up", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', users_path, :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,10 +1,20 @@
 Vintage::Application.routes.draw do
+  resources :password_resets
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin' => 'sessions#new'
+  match '/signout' => 'sessions#destroy', via: :delete
+  
+  resources :users
+  match '/signup' => 'users#new'
+  match '/password' => 'users#password', :as => :password
     
   root to: 'home#index'
   
   match '/home' => 'home#index'
   match '/about' => 'home#about'
   match '/contact_us' => 'home#contact_us'
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
