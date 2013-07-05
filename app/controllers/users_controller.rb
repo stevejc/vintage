@@ -21,13 +21,20 @@ class UsersController < ApplicationController
   end
   
   def edit
+    @reason = "profile"
   end
   
   def password
     @user = current_user
+    @reason = "password"
   end
   
   def update
+    if params[:commit] == "Change Password"
+      @reason = "password"
+    else
+      @reason = "profile"
+    end
     if @user.update_attributes(params[:user])
       cookies[:remember_token] = @user.remember_token
       sign_in @user
