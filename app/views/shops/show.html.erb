@@ -1,0 +1,42 @@
+<h1>Shop Show</h1>
+
+<table class="table">
+  <tr>
+    <td><b>Shop Name:</b></td>
+    <td>
+      <%= @shop.name %>
+    </td>
+  </tr> 
+
+  <tr>
+    <td><b>City:</b></td>
+    <td>
+      <%= @shop.city %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>State:</b></td>
+    <td>
+      <%= @shop.state %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Zip:</b></td>
+    <td>
+      <%= @shop.zip %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>About:</b></td>
+    <td>
+      <%= @shop.about %>
+    </td>
+  </tr>
+   
+</table>
+
+
+<%= link_to 'Back', shops_path, :class => 'btn' %>

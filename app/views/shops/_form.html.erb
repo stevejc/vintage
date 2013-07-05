@@ -1,0 +1,39 @@
+<%= form_for(@shop) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name, "Shop Name *"%>
+  <%= f.text_field :name %>
+  
+  <%= f.label :address1, "Address 1" %>
+  <%= f.text_field :address1 %>
+  
+  <%= f.label :address2, "Address 2" %>
+  <%= f.text_field :address2 %>
+  
+  <%= f.label :city, "City *" %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state, "State *" %>
+  <%= f.text_field :state %>
+   
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+  
+  <%= f.label :image, "Upload an image of your shop owner" %>
+  <%= f.file_field :image %>
+
+  <%= f.label :about, "Write an about section for your shop" %>
+  <%= f.text_area :about %>
+  
+  
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', yourshop_path, :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Set Up Your Shop", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', users_path(current_user), :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>

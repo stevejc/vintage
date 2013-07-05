@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704220814) do
+ActiveRecord::Schema.define(:version => 20130705134800) do
+
+  create_table "shops", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.text     "about"
+    t.string   "image"
+    t.string   "stripe_shop_token"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

@@ -5,6 +5,11 @@ Vintage::Application.routes.draw do
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', via: :delete
   
+  resources :shops
+  match '/yourshop' => 'shops#yourshop'
+  match '/yourshop/edit' => 'shops#edit', :as => :edit_yourshop
+  match'/yourshop/stripe' => 'shops#stripe'
+  
   resources :users
   match '/signup' => 'users#new'
   match '/password' => 'users#password', :as => :password

@@ -8,12 +8,16 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require jquery.Jcrop
  *= require bootstrap_and_overrides
  *= require_self
  *= require_tree .
  */
 
 @import "font-awesome";
+
+// required to allow jcrop review work with bootstrap
+.jcrop img {max-width: none}
 
 #error_explanation {
   color: #b94a48;

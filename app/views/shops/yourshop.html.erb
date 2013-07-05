@@ -1,0 +1,60 @@
+<h1>Shop Show</h1>
+
+<table class="table">
+  <tr>
+    <td><b>Shop Name:</b></td>
+    <td>
+      <%= @shop.name %>
+    </td>
+  </tr> 
+
+  <tr>
+    <td><b>City:</b></td>
+    <td>
+      <%= @shop.city %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>State:</b></td>
+    <td>
+      <%= @shop.state %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Zip:</b></td>
+    <td>
+      <%= @shop.zip %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>About:</b></td>
+    <td>
+      <%= @shop.about %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Shop owner photo:</b></td>
+    <td>
+      <%= image_tag @shop.image.thumb, { :class=>"shop_image"} if @shop.image? %>
+    </td>
+  </tr>
+  
+
+
+
+     
+</table>
+
+<div>
+  <p>Vintage Finds uses Stripe to process credit card transactions for every item you sell. You will need to set up an account prior to listing items for sale.</p>
+
+  <%= link_to image_tag("blue.png", :border => 0), "/auth/stripe_connect?scope=read_write&stripe_landing=register" %>
+  
+</div>
+
+<%= link_to 'Back', shops_path, :class => 'btn' %>
+<%= link_to 'Edit', edit_yourshop_path, :class => 'btn' %>
