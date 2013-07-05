@@ -1,4 +1,9 @@
 Vintage::Application.routes.draw do
+  resources :items
+  match '/youritem/:id' => 'items#youritem', :as => :youritem
+  match '/youritems' => 'items#youritems'
+  match '/list_for_sale/:id' => 'items#list_for_sale', :as => :list_for_sale
+  
   resources :password_resets
   
   resources :sessions, only: [:new, :create, :destroy]

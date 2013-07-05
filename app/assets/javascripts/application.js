@@ -16,3 +16,25 @@
 //= require jquery.remotipart
 //= require twitter/bootstrap
 //= require_tree .
+
+jQuery(function($) {
+
+	// makes tr's clickable
+	$("tr[data-link]").click(function() {
+	  window.location = this.dataset.link
+	});
+
+	// function to activate twitter bootstrap loading button
+	jQuery.fn.useLoadingButton = function() {
+		$('#button').button();
+		$('#button').click(function() {
+		    $(this).button('loading');
+		});
+	}
+	
+	// activates twitter bootstrap popover functionality
+	$('.popout').popover({ 
+		html: true
+  });
+ 
+})
