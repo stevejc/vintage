@@ -4,6 +4,10 @@ Vintage::Application.routes.draw do
   match '/youritems' => 'items#youritems'
   match '/list_for_sale/:id' => 'items#list_for_sale', :as => :list_for_sale
   
+  resources :item_images do
+    collection { post :sort }
+  end
+  
   resources :password_resets
   
   resources :sessions, only: [:new, :create, :destroy]

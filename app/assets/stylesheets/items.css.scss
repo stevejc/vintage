@@ -1,0 +1,203 @@
+// General Items Styling
+#layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items, .image_lists, #item-status {
+		border: solid #e4e4e2 1px;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+}
+
+#item-order, #item-favorite, #item-shop, #item-shop-other-items, #item-status {
+	margin-bottom: 10px;
+	padding: 15px 20px;
+}
+
+//Items Index
+.category-header {
+	margin-bottom: 15px;
+	border-bottom: solid #e4e4e2 1px;
+
+	ul {
+		display: inline-block;
+		list-style: none;
+	}
+
+}
+
+.item-listing {
+	padding: 4px;
+}
+
+.image_box {
+	position:relative;
+}
+
+.hide_link {
+	position: absolute;
+	top: 12px;
+	left:10px;
+	background: white;
+	border-radius: 12px;			
+}
+
+.hide_link_hover {
+	background: grey;
+}
+
+.favorite_image {
+display:none;
+}
+
+a.favorite_link {
+	color: red;
+	display: none;
+	text-decoration: none;
+}
+
+.favorite i {
+color: red;
+}
+
+//Items Show
+//Items Show Header
+#item_header {
+	padding-bottom: 20px;
+	
+	a {
+	margin-top: 10px;
+	}
+	
+	h1 {
+			display: inline;
+	}
+}
+
+//Items Show Main
+#layout-left {
+ 	width: 68%;
+	max-width: 660px;
+	display: inline;
+	float:left;
+}
+
+.item-header {
+	padding-left: 10px;
+	
+	h3 {
+	font-size: 30px;
+	}
+}
+
+.item-images ul {
+	list-style-type: none;
+	display: inline;
+	margin: 0px;
+}
+
+#thumbnails {
+	padding-bottom: 20px;
+	margin: 10px 0 0 0;
+	border-bottom: solid #e4e4e2 1px;
+	
+	ul {
+		list-style-type: none;
+		display: inline;
+		margin: 0;
+	}
+	
+	li {
+	display: inline;
+	}
+}
+
+#item-description {
+	padding: 10px;
+	
+	h4 {
+	margin-top: 0;
+	}
+}
+
+#layout-reviews {
+	margin-top: 15px;
+	width: 100%;
+	display: inline;
+	float:left;
+}
+
+//Items Show Right
+#layout-right {
+	width: 31%;
+	max-width: 300px;
+	float: right;
+}
+
+#item-order {
+	padding: 15px 20px;
+	
+	#price_available {
+		padding-bottom: 10px;
+	}
+	
+	h4{
+	display: inline;
+	}
+	
+	label {
+		display:inline;
+	}
+	
+	#question {
+		padding-top: 10px;
+		border-top: dashed lightgrey 1px;
+
+		p {
+			display: inline;
+			padding-right: 10px;
+		}
+	}
+}
+
+#item-favorite {
+	a {
+		float:left;
+		margin-right: 5px;
+	}
+	
+	p {
+		padding-top: 10px;
+		display: inline;
+	}
+}
+
+#item-shop h4{	
+	margin-top: 0;
+}
+
+#item-shop-other-items {
+	ul{
+		list-style-type: none;
+		margin: 0 0 10px 0;
+
+		li{
+		margin-bottom: 10px;
+		}
+	}
+}
+
+//Youritem View
+
+#item-image-gallary {
+	ul {
+	list-style-type: none;
+	margin: 0 0 10px 0;
+	}
+	
+	li{
+		display: inline-block;
+		margin-right: 10px;
+		width: 175px;
+	}
+	
+	.image_lists{
+		padding: 10px;	
+	}
+}

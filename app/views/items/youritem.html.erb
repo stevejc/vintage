@@ -1,5 +1,7 @@
 <h1>Your Shop Item</h1>
 
+<%= display_item_status(@item) %>
+
 <table class="table">
   <tr>
     <td><b>Item:</b></td>
@@ -31,6 +33,17 @@
    
 </table>
 
+<div id="item-image-gallary">
+  <ul id="pictures" data-update-url="<%= sort_item_images_url %>">
+    <% @item.item_images.each do |picture| %>
+      <%= render "items/item_images", object: picture %>
+    <% end %>
+  </ul>
+</div>
+
+<% if @item.item_images.size < 5 %>
+  <%= link_to "Add an Image", new_item_image_path(:item_id => @item), :class => 'btn', :id => 'add-item_image', remote: true %>
+<% end %>
 
 <%= link_to 'Back', youritems_path, :class => 'btn' %>
 <%= link_to 'Edit', edit_item_path(@item), :class => 'btn' %>

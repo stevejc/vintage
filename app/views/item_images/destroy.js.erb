@@ -1,0 +1,3 @@
+$('#picture_<%= @itemimage.id %>').remove();
+$('#item-status').remove();
+$('<%= j display_item_status(@item) %>').insertAfter('h1');

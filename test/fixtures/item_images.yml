@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: item_images
+#
+#  id         :integer          not null, primary key
+#  item_id    :integer
+#  image      :string(255)
+#  order      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item_id: 1
+  image: MyString
+  order: 1
+
+two:
+  item_id: 1
+  image: MyString
+  order: 1

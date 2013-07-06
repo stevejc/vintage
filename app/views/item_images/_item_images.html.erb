@@ -1,0 +1,7 @@
+<li id="picture_<%= @itemimage.id %>">
+  <div class="image_lists">
+    <%= image_tag(@itemimage.image.index) %>
+    <%= @itemimage.order %>
+    <%= link_to "remove", @itemimage, :confirm => 'Are you sure?', :method => :delete, remote: true %>
+  </div>
+</li>

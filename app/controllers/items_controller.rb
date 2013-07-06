@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
   end
   
   def youritem
+
     redirect_to items_path if @item.shop.user_id != current_user.id
   end
   

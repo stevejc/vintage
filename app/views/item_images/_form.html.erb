@@ -1,0 +1,11 @@
+<%= form_for @itemimage, :html => {:multipart => true}, :remote => true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :item_id %>
+
+  <p>
+    <%= f.file_field :image %>
+  </p>
+
+  <p><%= f.submit "Upload Picture", id:"button", class: "btn btn-warning", data: { "loading-text" => "loading ..." } %></p>
+<% end %>

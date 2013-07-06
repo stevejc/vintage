@@ -1,0 +1,5 @@
+$('#new_item_image').remove();
+$('#add-item_image').show();
+$('#item-status').remove();
+$('<%= j display_item_status(@itemimage.item) %>').insertAfter('h1');
+$('#pictures').append('<%= j render "item_images" %>');
