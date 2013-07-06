@@ -34,9 +34,60 @@
 	}
  }
 
-
 .container {
 	max-width: 940px;
+}
+
+footer {
+	border-top: solid #e4e4e2 1px;
+	margin-top: 15px;
+	padding-top: 10px;
+	padding-bottom: 25px;
+	width: 100%; 
+	
+	td {
+		vertical-align: top;
+	}
+	
+	td:not(:last-child) {
+		padding-right: 25px;
+	}
+	
+	ul {
+		list-style: none;
+		margin-left: 0px;
+	}
+	
+}
+
+.more-categories {
+	border-top: solid #e4e4e2 1px;
+	
+	h4{
+		text-align: center;
+	}
+	ul {
+		text-align: center;
+		list-style: none;
+		margin: 0px;
+		
+		li {
+			display: inline;
+		}
+		
+		li:not(:last-child) {
+			padding-right: 20px;
+		}
+	}
+}
+
+.buy-now h3 {
+	display: inline;
+}
+
+.buy-now a {
+	float: right;
+	margin-top: 7px;
 }
 
 .right {
@@ -45,6 +96,38 @@
 
 .color-green {
 	color: green;
+}
+
+.color-red {
+	color: red;
+}
+
+.review {
+	border: solid #e4e4e2 1px;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+	margin-bottom: 15px;
+}
+
+.review-header {
+	border-bottom: solid #e4e4e2 1px;
+	padding: 10px;
+}
+
+.reviewed-by {
+	display: inline;
+}
+
+.comments {
+	padding: 10px;
+}
+
+.display-address p {
+ margin-bottom: 0px;
+}
+
+.inline {
+	display: inline;
 }
 
 .required-field {
