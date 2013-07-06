@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: item_images
+#
+#  id         :integer          not null, primary key
+#  item_id    :integer
+#  image      :string(255)
+#  order      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class ItemImage < ActiveRecord::Base
   attr_accessible :image, :order, :item_id, :remove_image
   belongs_to :item

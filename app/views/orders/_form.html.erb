@@ -1,0 +1,64 @@
+<%= form_for(@order) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>  
+ 
+<% if @order.stripe_card_token.present? %>
+  Credit card has been provided.
+<% else %>
+<div id="current" class="<%= display_credit_card_form("current") %>" >
+  Pay with your:
+  <% case current_user.card_type %>
+  <% when "Visa" %>
+    <%= image_tag("visa-curved-32px.png") %>
+  <% else %>
+    <%= image_tag("mastercard-curved-32px.png") %>
+  <% end %>
+  card ending with <%= current_user.last4 %>.
+  <a>Use a different card</a> 
+</div> 
+<div id="new" class="<%= display_credit_card_form("new") %>">  
+  Payment Options:<br>
+  <div>
+    <%= image_tag("mastercard-curved-32px.png") %>
+    <%= image_tag("visa-curved-32px.png") %>
+    <%= image_tag("american-express-curved-32px.png") %>
+    <%= image_tag("discover-curved-32px.png") %>
+  </div><br>
+  <div class="field">
+    <%= label_tag :card_number, "Credit Card Number" %>
+    <%= text_field_tag :card_number, nil, name: nil %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+    <%= text_field_tag :card_code, nil, name: nil %>
+    <%= image_tag("cvc.png") %>
+  </div>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month Date.today, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  </div>
+</div>
+<% end %>
+
+
+  
+  <%= f.hidden_field :shipping_address_id %>
+  
+  <%= f.hidden_field :stripe_card_token %>
+  
+  <%= hidden_field_tag 'cart_order_id', @cart_order.id %>
+  
+  <div class="form-actions">    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Place Order", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', @cart, :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>

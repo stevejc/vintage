@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: line_items
+#
+#  id            :integer          not null, primary key
+#  cart_id       :integer
+#  item_id       :integer
+#  quantity      :integer          default(1)
+#  order_id      :integer
+#  shop_id       :integer
+#  price         :decimal(, )
+#  cart_order_id :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cart_id: 1
+  item_id: 1
+  quantity: 1
+  order_id: 1
+  shop_id: 1
+  price: 9.99
+  cart_order_id: 1
+
+two:
+  cart_id: 1
+  item_id: 1
+  quantity: 1
+  order_id: 1
+  shop_id: 1
+  price: 9.99
+  cart_order_id: 1

@@ -1,0 +1,34 @@
+<%= form_for(@shippingaddress) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= hidden_field_tag(:cart_order_id, @cart_order.id) %>
+  
+  <%= f.label :name, "Ship to name" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :address1, "Address Line 1:" %>
+  <%= f.text_field :address1 %>
+  
+  <%= f.label :address2, "Address Line 2:" %>
+  <%= f.text_field :address2 %>
+  
+  <%= f.label :city, "City:" %>
+  <%= f.text_field :city %>
+  
+  <%= f.label :state, "State/Province/Region:" %>
+  <%= f.text_field :state %>
+  
+  <%= f.label :zip, "ZIP:" %>
+  <%= f.text_field :zip %>
+  
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', user_path(current_user), :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Ship to this address", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', @cart, :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>

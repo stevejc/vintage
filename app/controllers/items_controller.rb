@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @items = @item.shop.items.where('id != ? AND status = ?', @item.id, "Available").limit(3)
     @items_count = @item.shop.items.size
+    @lineitem = LineItem.new
   end
   
   def youritem

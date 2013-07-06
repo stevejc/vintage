@@ -12,6 +12,9 @@
 #  password_reset_sent_at :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  stripe_customer_token  :string(255)
+#  card_type              :string(255)
+#  last4                  :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

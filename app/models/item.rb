@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
   
   belongs_to :shop
   has_many :item_images, dependent: :destroy
+  has_many :line_items
   
   before_create :update_item_status_to_pending
   

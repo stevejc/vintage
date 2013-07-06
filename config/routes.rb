@@ -1,4 +1,9 @@
 Vintage::Application.routes.draw do
+  resources :carts
+  match '/yourcart' => 'carts#show'
+  
+  match '/cart_order/:id', to: 'cart_orders#destroy', :as => :cart_order, via: :delete
+  
   resources :items
   match '/youritem/:id' => 'items#youritem', :as => :youritem
   match '/youritems' => 'items#youritems'
@@ -8,11 +13,25 @@ Vintage::Application.routes.draw do
     collection { post :sort }
   end
   
+  resources :line_items
+  
+  resources :orders
+  match '/yourshoporders' => 'orders#yourshoporders'
+  match '/yourorders' => 'orders#yourorders'
+  match '/yourshoporder/:id' => 'orders#yourshoporder', :as => :yourshoporder
+  match '/yourorder/:id' => 'orders#yourorder', :as => :yourorder
+  match '/pay' => 'orders#pay'
+  match '/shipmentdetails/:id/edit' => 'orders#shipment_details', :as => :edit_shipment
+  match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
+  match '/billcustomer/:id' => 'orders#bill_customer', :as => :bill_customer
+  
   resources :password_resets
   
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', via: :delete
+  
+  resources :shipping_addresses
   
   resources :shops
   match '/yourshop' => 'shops#yourshop'

@@ -26,7 +26,10 @@ class Shop < ActiveRecord::Base
   after_update :crop_avatar
   
   belongs_to :user
+  has_many :cart_orders, dependent: :destroy
   has_many :items, dependent: :destroy
+  has_many :line_items
+  has_many :orders
   
   mount_uploader :image, ImageUploader
   

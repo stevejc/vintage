@@ -1,0 +1,30 @@
+#cart_header {
+
+	h3{
+		display: inline;
+	}
+	
+	a {
+		float: right;
+	}
+	
+}
+
+.cart_order {
+	border: 1px solid #d9d9d9;
+	border-radius: 5px;
+		
+	p {
+		display: inline;
+	}
+		
+	.cart_order_header {
+	border-bottom: 1px solid #d9d9d9;
+	background: #eaeae3;
+	}	
+		
+}
+
+.float_right {
+	float: right;
+}

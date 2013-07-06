@@ -1,0 +1,12 @@
+<div>
+<% @shippingaddresses.each do |address| %>
+  <div id="select_address">
+    <div id="order-address">
+      <%= display_address(address) %> 
+    </div>
+    <%= link_to "Ship to this address", pay_path(:address_id => address.id, :cart_order_id => @cart_order), :class => "btn btn-warning", :id => "ship_to" %><br>
+    <%= link_to 'Edit', edit_shipping_address_path(address, :cart_order_id => @cart_order), :class => 'btn' %>  
+    <%= link_to 'Delete', shipping_address_path(address, :cart_order_id => @cart_order), :confirm => 'Are you sure?', :method => :delete, :class => 'btn' %>
+  </div>
+<% end %>
+</div>

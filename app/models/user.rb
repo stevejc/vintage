@@ -12,12 +12,18 @@
 #  password_reset_sent_at :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  stripe_customer_token  :string(255)
+#  card_type              :string(255)
+#  last4                  :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
   has_secure_password
   has_one :shop, dependent: :destroy
+  has_many :items, :through => :shop
+  has_many :orders
+  has_many :shipping_addresses
   
   before_save { self.email.downcase! }
   before_save { generate_token(:remember_token)}

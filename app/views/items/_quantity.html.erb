@@ -1,5 +1,16 @@
 <% if @item.quantity >= 1 %>
-
+  <%= form_for(@lineitem) do |f| %>
+    <% if @item.quantity > 1 %>
+      <%= f.label :quantity, "How many?" %>
+      <%= f.text_field :quantity, :class => "input-mini" %>
+    <% else %>
+      <%= f.hidden_field(:quantity, :value => 1 ) %>
+    <% end %>
+    <%= hidden_field_tag(:item, @item.id) %>
+    <%= button_tag(type: 'submit', class: "btn btn-warning") do %>
+      <i class="icon-shopping-cart"></i> Add to Cart
+    <% end %>
+  <% end %>
 <% end %>
 
 <div id="question">
