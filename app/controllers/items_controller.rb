@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.text_search(params[:query]).where('status = ?', "Available")
     @keywords = params[:query]
-    @favorites = current_user.favorite_items if current_user
   end
   
   def youritems

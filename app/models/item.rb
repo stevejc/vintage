@@ -24,6 +24,14 @@ class Item < ActiveRecord::Base
   validates :shop_id,  presence: true
   validates :quantity, :title, :description, :price, presence: true
   
+  def self.text_search(query)
+    if query.present?
+      where("title @@ :q or description @@ :q", q: query)
+    else
+      scoped
+    end
+  end
+  
   def update_status_to_available
     if quantity >= 1 && item_images.exists?
       self.status = "Available"

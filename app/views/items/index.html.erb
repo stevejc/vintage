@@ -1,0 +1,58 @@
+<div class="category-header clearfix">
+  <h1 class="inline">Lighting</h1>
+  <div class="right">
+    <ul>
+      <li><%= link_to "Chandeliers", items_path %></li>
+      <li><%= link_to "Flush Mounts", items_path %></li>
+      <li><%= link_to "Pendants", items_path %></li>
+    </ul>
+    <ul>
+      <li><%= link_to "Semi Flush Mounts", items_path %></li>
+      <li><%= link_to "Table", items_path %></li>
+      <li><%= link_to "Floor", items_path %></li>
+    </ul>
+    <ul>
+      <li><%= link_to "Wall", items_path %></li>
+      <li><%= link_to "Shades", items_path %></li>
+      <li><%= link_to "Switchplates & Switches", items_path %></li>
+    </ul>
+  </div>
+</div>
+
+<% if @items.exists? %>
+  <% @items.in_groups_of(4,false) do |row_items| %>
+    <div class="row-fluid">
+      <ul class="thumbnails">
+        <% for item in row_items %>
+          <li class="span3 item-listing">
+            <div class="image_box">
+              <%= link_to image_tag(item.item_images.first.image.index, :border => 0), item_path(item) if item.item_images.present? %>      
+              <div class="hide_link">     
+            </div>
+            <div><%= link_to item.title, item_path(item) %></div>
+            <%= link_to item.shop.name, shop_path(item.shop) %>   
+            <span class="right"><%= number_to_currency(item.price) %></span> 
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+No results for <b><%= @keywords %></b>
+Other things to try
+<ul>
+  <li>Search using other keywords</li>
+  <li> Search using fewer keywords</li>
+</ul>
+Looking for inspiration? <%= link_to "Visit our homepage", root_path %>
+<% end %>
+
+<div class="more-categories row-fluid">
+  <h4>More Vintage Find Categories</h4>
+  <ul>
+    <li><%= link_to "Lighting", items_path %></li>
+    <li><%= link_to "Hardware", items_path %></li>
+    <li><%= link_to "Furniture", items_path %></li>
+    <li><%= link_to "Salvage", items_path %></li>
+  </ul>
+</div>

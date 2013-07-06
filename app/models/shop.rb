@@ -18,7 +18,7 @@
 #
 
 class Shop < ActiveRecord::Base
-  attr_accessible :about, :address1, :address2, :city, :image, :name, :state, :stripe_shop_token, :user_id, :zip, :remove_image, :stripe_code, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessible :about, :address1, :address2, :city, :image, :name, :state, :stripe_code, :user_id, :zip, :remove_image, :stripe_code, :crop_x, :crop_y, :crop_w, :crop_h
    
   attr_accessor :stripe_code
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
@@ -36,6 +36,17 @@ class Shop < ActiveRecord::Base
   
   def crop_avatar
     image.recreate_versions! if crop_x.present?
+  end
+  
+  def save_with_stripe_account
+    customer = ActiveSupport::JSON.decode(`curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{ENV['STRIPE_SECRET_KEY']} -d code=#{self.stripe_code} -d grant_type=authorization_code`)
+    if customer['access_token'] == nil
+      errors.add(:base, "Your Stripe Authorization failed, please try again. Error: #{customer['error_description']}")
+      false
+    else
+      self.stripe_shop_token =  customer['access_token']
+      self.save!
+    end    
   end
   
 end
