@@ -1,0 +1,69 @@
+<h1>Shop Order Show</h1>
+<div>
+<% if @order.status == "Order Shipped" %>
+  Congrats this order has been successfully completed.
+  <%= link_to 'Update Shipment Info', edit_shipment_path(@order), :class => 'btn' %>
+<% elsif @order.status == "Order Submitted" %>
+You have received an order, please verify that all ordered items are available. Once verified, please click charge customer
+<%= link_to 'Verify and Charge', bill_customer_path(@order), :class => 'btn' %>
+<% else %>
+It is now time to ship your order.
+<%= link_to 'Update Shipment Info', edit_shipment_path(@order), :class => 'btn' %>
+<% end %>
+
+
+</div>
+
+<table class="table">
+  
+  <tr>
+    <td><b>Order Date:</b></td>
+    <td>
+      <%= @order.created_at %>
+    </td>
+  </tr>
+  
+</table>
+
+<h3>Shipping Address</h3>
+  
+<table>
+  
+  <tr>
+    <td>
+      <%= display_address(@shippingaddress) %>
+    </td>
+  </tr>  
+   
+</table>
+
+<h3>Purchased Items</h3>
+
+<table class="table">
+  <tr>
+    <td>Item</td>
+    <td>Quantity</td>
+    <td>Price</td>    
+  </tr>
+  
+  <% @order.line_items.each do |line_item| %>
+    <tr>
+      <td><%= link_to line_item.item.title, item_path(line_item.item) %></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= number_to_currency(line_item.price) %></td>
+    </tr>
+  <% end %> 
+  
+  <tr>
+  <td></td>
+  <td><b>Total Cost:</b></td>
+  <td><b><%= number_to_currency(@order.total_price) %></b></td>
+  </tr> 
+   
+</table>
+
+<% if @order.status == "Order Shipped" %>
+  <%= render "display_shipping_information" %>
+<% end %>
+
+<%= link_to 'Back', :back, :class => 'btn' %>
