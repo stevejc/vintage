@@ -21,6 +21,12 @@
       <%= @order.status %>
     </td>
   </tr>
+  
+  <% if !@order.review  %>
+    Submit a review:
+    <%= link_to (content_tag(:i, "", :class=>"icon-thumbs-up color-green")) + (content_tag(:i, "", :class=>"icon-thumbs-down color-red")) + " Review", new_review_path(:order_id => @order.id) , :class => "btn" %>
+
+  <% end %>
 
 </table>
 
@@ -63,6 +69,15 @@
   </tr>  
    
 </table>
+
+<% if @order.review  %>
+Your review for this purchase:
+<%= @order.review.positive %>
+<%= @order.review.comment %>
+<%= @order.review.updated_at %>
+  <%= link_to (content_tag(:i, "", :class=>"icon-thumbs-up color-green")) + (content_tag(:i, "", :class=>"icon-thumbs-down color-red")) + " Review", edit_review_path(@order.review, :order_id => @order.id) , :class => "btn" %>
+  <%= link_to 'Delete this review', review_path(@order.review), :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
 
 <% if @order.status == "Order Shipped" %>
   <%= render "display_shipping_information" %>

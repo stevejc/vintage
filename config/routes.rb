@@ -27,6 +27,8 @@ Vintage::Application.routes.draw do
   
   resources :password_resets
   
+  resources :reviews
+  
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', via: :delete

@@ -1,0 +1,22 @@
+<div class="review">
+  <% @reviews.each do |review| %>
+    <div class="review-header">
+      <div class="reviewed-by">
+        Reviewed by 
+        <%= review.user.first_name %>
+        -
+        <%= review.updated_at %>
+      </div>
+      <div class="right">
+        <% if review.positive %>
+          <i class="icon-thumbs-up color-green"></i>
+        <% else %>
+          <i class="icon-thumbs-down color-red"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="comments">
+      <%= review.comment %>
+    </div>
+  <% end %>
+</div>

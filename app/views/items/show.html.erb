@@ -26,7 +26,12 @@
         <h4>What's included in my order?</h4>
         <%= @item.description %>
       </div>   
-    </div>   
+    </div>  
+    <% unless @reviews.empty? %>
+      <div id="layout-reviews">
+        <%= render 'layouts/reviews' %>
+      </div>
+    <% end %>
   </div>
   
 

@@ -1,0 +1,23 @@
+<%= form_for(@review) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :positive, "Thumbs up or down for this store" %>
+  <%= f.radio_button :positive, true %> Thumbs Up!
+  <%= f.radio_button :positive, false %> Thumbs Down!
+  
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  
+  <%= f.hidden_field :order_id, :value => @order %>
+  
+  <div class="form-actions">
+    
+    <% if params[:action] == "edit" %>
+      <%= f.submit "Save changes", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', yourshop_path, :class => 'btn' %>
+    <% else %>
+      <%= f.submit "Submit Your Review", class: "btn btn-warning" %>
+      <%= link_to 'Cancel', users_path(current_user), :class => 'btn' %>
+    <% end %>
+  </div>
+<% end %>
