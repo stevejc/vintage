@@ -48,8 +48,8 @@
     </div>
     
     <div id="item-favorite">
-      <%= link_to (content_tag(:i, "", :class=>"icon-heart") + " Favorite"), root_path(:id => @item.id), :method=> :post, :class => 'btn favorite' %>
-      <p><%= display_loves(1) %></p>
+      <%= link_to (content_tag(:i, "", :class=>"icon-heart") + " Favorite"), favorites_path(:id => @item.id), :method=> :post, :class => 'btn favorite' %>
+      <p><%= display_loves(@item.favorites.size) %></p>
     </div>
     
     <div id="item-shop" class="pagination-centered">

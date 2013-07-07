@@ -4,6 +4,9 @@ Vintage::Application.routes.draw do
   
   match '/cart_order/:id', to: 'cart_orders#destroy', :as => :cart_order, via: :delete
   
+  resources :favorites
+  match '/yourfavorites' => 'favorites#yourfavorites', :as => :yourfavorites
+  
   resources :items
   match '/youritem/:id' => 'items#youritem', :as => :youritem
   match '/youritems' => 'items#youritems'

@@ -19,6 +19,7 @@ class Item < ActiveRecord::Base
   belongs_to :shop
   has_many :item_images, dependent: :destroy
   has_many :line_items
+  has_many :favorites
   
   before_create :update_item_status_to_pending
   
@@ -31,6 +32,10 @@ class Item < ActiveRecord::Base
     else
       scoped
     end
+  end
+  
+  def my_favorite?(user)
+    Favorite.where('item_id = ? AND user_id = ?', self.id, user).exists?  
   end
   
   def update_status_to_available

@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :shipping_addresses
   has_many :reviews
+  has_many :favorites
   
   before_save { self.email.downcase! }
   before_save { generate_token(:remember_token)}

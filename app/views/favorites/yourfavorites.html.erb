@@ -1,0 +1,20 @@
+<h1>Your Favorites</h1>
+
+<% @favorites.in_groups_of(4,false) do |row_items| %>
+  <div class="row-fluid">
+
+    <ul class="thumbnails">
+      <% for fav in row_items %>
+        <li class="span3 item-listing">
+          <div class="image_box">
+            <%= link_to image_tag(fav.item.item_images.first.image, :border => 0), item_path(fav.item) if fav.item.item_images.present? %>
+            <div class="hide_link"><%= link_to (content_tag(:i, "", :class=>"icon-remove")), fav, :confirm => 'Are you sure you want to remove this item from your favorites?', :method => :delete, :class => 'favorite_link', :title => "Remove item from your favs" %></div>
+          </div>
+          <div><%= link_to fav.item.title, item_path(fav.item) %></div>
+          <%= link_to fav.item.shop.name, shop_path(fav.item.shop) %>   
+          <span class="right"><%= number_to_currency(fav.item.price) %></span>          
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
