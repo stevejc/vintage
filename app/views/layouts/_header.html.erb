@@ -10,6 +10,7 @@
 			<div class="nav-collapse collapse">
 			  <ul class="nav">
     				<li><%= link_to "About", about_path %></li>
+    				<li><%= render "layouts/item-search" %></li>
   			</ul>	
   			<ul class="nav pull-right">
   			  <% if signed_in? %>

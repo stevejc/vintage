@@ -1,0 +1,8 @@
+<%= form_tag items_path, method: :get, :class => 'navbar-form' do %>
+  <p>
+	  <%= text_field_tag :query, params[:query], :placeholder => "Search for Items", :class =>"input-xlarge" %>
+	  <%= button_tag(type: 'submit', name: nil, class: "btn") do %>
+      <i class="icon-search"></i>
+    <% end %>
+  </p>
+<% end %>
