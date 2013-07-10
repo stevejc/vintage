@@ -1,8 +1,8 @@
+@import "application";
+
 // General Items Styling
 #layout-main, #item-order, #item-shop, .item-listing, #item-favorite, #item-shop-other-items, .image_lists, #item-status {
-		border: solid #e4e4e2 1px;
-		border-radius: 3px;
-		box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+	@include rounded-box;
 }
 
 #item-order, #item-favorite, #item-shop, #item-shop-other-items, #item-status {
@@ -13,7 +13,7 @@
 //Items Index
 .category-header {
 	margin-bottom: 15px;
-	border-bottom: solid #e4e4e2 1px;
+	border-bottom: $border;
 
 	ul {
 		display: inline-block;
@@ -95,7 +95,7 @@ color: red;
 #thumbnails {
 	padding-bottom: 20px;
 	margin: 10px 0 0 0;
-	border-bottom: solid #e4e4e2 1px;
+	border-bottom: $border;
 	
 	ul {
 		list-style-type: none;
@@ -147,7 +147,7 @@ color: red;
 	
 	#question {
 		padding-top: 10px;
-		border-top: dashed lightgrey 1px;
+		border-top: dashed $light-grey 1px;
 
 		p {
 			display: inline;

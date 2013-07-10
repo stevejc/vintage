@@ -1,5 +1,8 @@
+@import "application";
+
+
 footer {
-	border-top: solid #e4e4e2 1px;
+	border-top: $border;
 	margin-top: 15px;
 	padding-top: 10px;
 	padding-bottom: 25px;

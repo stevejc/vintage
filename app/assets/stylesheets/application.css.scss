@@ -16,8 +16,19 @@
 
 @import "font-awesome";
 
+$light-grey: #e4e4e2;
+$border: solid $light-grey 1px;
+
+@mixin rounded-box { 
+	border: $border;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+}
+
 // required to allow jcrop review work with bootstrap
 .jcrop img {max-width: none}
+
+
 
 #error_explanation {
   color: #b94a48;
