@@ -37,8 +37,7 @@ jQuery(function($) {
 	// activates twitter bootstrap popover functionality
 	$('.popout').popover({ 
 		html: true
-  });   
-
+  });  
  
 })
 
