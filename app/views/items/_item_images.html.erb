@@ -1,6 +1,6 @@
 <li id="picture_<%= object.id %>">
   <div class="image_lists">
     <%= image_tag(object.image.index) %>
-    <%= link_to "remove", object, :confirm => 'Are you sure?', :method => :delete, remote: true %>
+    <%= link_to "remove", object, :confirm => 'Are you sure you want to delete this image, no take backsies?', :method => :delete, remote: true %>
   </div>
 </li>
