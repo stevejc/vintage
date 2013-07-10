@@ -1,0 +1,30 @@
+<footer class="row-fluid">
+  <table>
+    <tr>
+      <td>
+        <h4>Vintage Finds</h4>
+        <p>Vintage Finds is a market place dedicated to helping designers, architects and home owners find the perfect unique item to give your home the exact sense of style you desire. Stop driving to the remote corners of the country in a desparate search. Vintage Finds brings thousands of antique stores and salavage yards to you.</p>
+      </td>
+      <td>
+        <h4>Sell on Vintage Finds</h4>
+        <p>Own an antique store, salvage yard, or just own a great collection of vintage items for a home? Setting up a shop on Vintage finds is a snap. Take pictures of your items, write-up a great description, set a price and you are ready to find a buyer looking for your unique items. You can accept payments using Visa, Mastercard, Amex, Discover and more.</p>
+        <% if signed_in? %>
+          <% if current_user.shop == nil %>
+            <%= link_to "Set up your shop today", new_shop_path %>
+          <% else %>
+            <%= link_to "Go to your store", yourshop_path %>
+          <% end %>
+        <% else %>
+          <%= link_to "Set up your shop today", new_shop_path %>
+        <% end %>
+      </td>
+      <td>
+        <h4>Navigation</h4>
+        <ul>
+          <li><%= link_to "Help", root_path %></li>
+          <li><%= link_to "Contact Us", root_path %></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</footer>

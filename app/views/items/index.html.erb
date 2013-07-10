@@ -26,7 +26,7 @@
         <% for item in row_items %>
           <li class="span3 item-listing">
             <div class="image_box">
-              <%= link_to image_tag(item.item_images.first.image.index, :border => 0), item_path(item) if item.item_images.present? %>      
+              <%= link_to image_tag(item.item_images.first.image.index), item_path(item) if item.item_images.present? %>      
               <div class="hide_link">
                 <% if current_user && !item.my_favorite?(current_user.id) %>          
                   <%= link_to (content_tag(:i, "", :class=>"icon-heart")), favorites_path(:id => item.id), :method=> :post, :class => 'favorite_link', :title => "Add item to your favs" %>
