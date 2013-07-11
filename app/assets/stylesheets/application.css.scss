@@ -46,6 +46,24 @@ $border: solid $light-grey 1px;
 	}
  }
 
+#positive-review label {
+	display: inline-block;
+}
+
+#positive-review label:first-child {
+	display:block;
+}
+
+#positive-review .field_with_errors {
+display:inline-block;
+}
+
+
+.help-inline {
+	color: #b94a48;
+	margin-top: -30px;
+}
+
 .container {
 	max-width: 940px;
 }

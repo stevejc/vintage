@@ -1,12 +1,17 @@
 <%= form_for(@review) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-
-  <%= f.label :positive, "Thumbs up or down for this store" %>
-  <%= f.radio_button :positive, true %> Thumbs Up!
-  <%= f.radio_button :positive, false %> Thumbs Down!
+  <fieldset id="positive-review">
+    <%= f.label :positive, "Thumbs up or down for this store *" %><br>
+    <%= f.radio_button :positive, true %><%= f.label :positive, "Thumbs Up!" %> 
+    <%= f.radio_button :positive, false %><%= f.label :positive, "Thumbs Down!" %>  
+  </fieldset>
+    <%= errors_for @review, :positive %>
   
-  <%= f.label :comment %>
-  <%= f.text_area :comment %>
+  <%= f.label :comment, "Comment *" %>
+  <%= f.text_area :comment, :class => 'span7', :rows => "10" %>
+  <%= errors_for @review, :comment %>
+  
+
   
   <%= f.hidden_field :order_id, :value => @order %>
   

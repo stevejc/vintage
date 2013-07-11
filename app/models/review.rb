@@ -4,4 +4,9 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :order
   has_one :shop, :through => :orders
+  
+  validates :order_id, :user_id, :comment,  presence: true
+  validates :positive, :inclusion => {:in => [true, false],
+                       :message => "Don't forget to check positive or negative" }
+
 end

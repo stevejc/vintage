@@ -1,24 +1,32 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-
-  <% if @reason != "password" %>
-    <%= f.label :first_name, "First Name *" %>
-    <%= f.text_field :first_name %>
+  <flieldset>
+    <% if @reason != "password" %>
+      <%= f.label :first_name, "First Name *" %>
+      <%= f.text_field :first_name %>
+      <%= errors_for @user, :first_name %>
   
-    <%= f.label :last_name, "Last Name *" %>
-    <%= f.text_field :last_name %>
+      <%= f.label :last_name, "Last Name *" %>
+      <%= f.text_field :last_name %>
+      <%= errors_for @user, :last_name %>
 
-    <%= f.label :email, "Email *" %>
-    <%= f.text_field :email %>
-  <% end %>
+      <%= f.label :email, "Email *" %>
+      <%= f.text_field :email %>
+      <%= errors_for @user, :email %>
+    <% end %>
+  </fieldset>
   
-  <% if @reason != "profile" %>  
-    <%= f.label :password, "Password *" %>
-    <%= f.password_field :password %>
+  <fieldset>
+    <% if @reason != "profile" %>  
+      <%= f.label :password, "Password *" %>
+      <%= f.password_field :password %>
+      <%= errors_for @user, :password %>
 
-    <%= f.label :password_confirmation, "Confirmation *" %>
-    <%= f.password_field :password_confirmation %>    
-  <% end %>
+      <%= f.label :password_confirmation, "Confirmation *" %>
+      <%= f.password_field :password_confirmation %>
+      <%= errors_for @user, :password_confirmation %>    
+    <% end %>
+  </fieldset>
    
   <div class="form-actions">
     

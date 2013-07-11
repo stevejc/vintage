@@ -1,17 +1,25 @@
 <%= form_for(@item) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title, autofocus: true %>
   
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <fieldset>
 
-  <%= f.label :price %>
-  <%= f.text_field :price %>
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true %>
+    <%= errors_for @item, :title %>
+    
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+    <%= errors_for @item, :price %>
    
-  <%= f.label :quantity %>
-  <%= f.text_field :quantity %><br>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+    <%= errors_for @item, :quantity %>
+  
+    <%= f.label :description %>
+    <%= f.text_area :description, :class => 'span7', :rows => "10" %>
+    <%= errors_for @item, :description %>
+
+  </fieldset>
   
   
   <div class="form-actions">    
