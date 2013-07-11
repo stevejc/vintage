@@ -68,6 +68,34 @@ display:inline-block;
 	max-width: 940px;
 }
 
+.all-categories {
+	padding-top: 15px;
+	
+	ul {
+		text-align: center;
+		list-style: none;
+		margin: 0px;
+	
+		li {
+			display: inline;
+			
+			a {
+				font-size: 25px;
+			}
+			
+			a:hover {
+				text-decoration: none;
+				color: #0088cc;
+			}
+
+		}
+	
+		li:not(:last-child) {
+			padding-right: 20px;
+		}
+	}
+}
+
 .more-categories {
 	border-top: solid #e4e4e2 1px;
 	

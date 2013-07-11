@@ -1,5 +1,7 @@
 $('#new_item_image').remove();
-$('#add-item_image').show();
+<% if @itemimage.item.item_images.size < 5 %>
+  $('#add-item_image').show();
+<% end %>
 $('#item-status').remove();
 $('<%= j display_item_status(@itemimage.item) %>').insertAfter('h1');
 $('#pictures').append('<%= j render "item_images" %>');

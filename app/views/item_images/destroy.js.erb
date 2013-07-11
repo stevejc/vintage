@@ -1,3 +1,8 @@
 $('#picture_<%= @itemimage.id %>').remove();
 $('#item-status').remove();
+if ($('#add-item_image').length){
+    $('#add-item_image').show();
+}
+else $('<%= j link_to "Add an Image", new_item_image_path(:item_id => @itemimage.item.id), :class => 'btn', :id => 'add-item_image', remote: true %>').insertBefore('#back');
+  
 $('<%= j display_item_status(@item) %>').insertAfter('h1');
