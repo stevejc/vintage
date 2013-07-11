@@ -5,5 +5,8 @@ $('#add-item_image').hide().after('<%= j render "form" %>');
 $('#button').useLoadingButton();
 $('.disable-to_start').prop('disabled', true);
 $('#item_image_image').change(function(i){
-  $('.disable-to_start').prop('disabled', false);
+  if ($(this).val() != ''){
+    $('.disable-to_start').prop('disabled', false);
+  }
+  else {$('.disable-to_start').prop('disabled', true);}
 })

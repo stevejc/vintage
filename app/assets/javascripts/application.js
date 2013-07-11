@@ -16,6 +16,7 @@
 //= require jquery.Jcrop
 //= require jquery.remotipart
 //= require bootbox
+//= require bootstrap-fileupload
 //= require twitter/bootstrap
 //= require_tree .
 
