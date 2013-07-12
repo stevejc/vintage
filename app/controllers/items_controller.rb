@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.text_search(params[:query]).where('status = ?', "Available")
+    @items = Item.text_search(params[:query])
     @keywords = params[:query]
   end
   
@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @items = @item.shop.items.where('id != ? AND status = ?', @item.id, "Available").limit(3)
-    @reviews = @item.shop.reviews
+    @items = @item.other_items_from_this_shop
+    @reviews = @item.reviews
     @items_count = @item.shop.items.size
     @lineitem = LineItem.new
   end

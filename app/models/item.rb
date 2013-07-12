@@ -20,6 +20,7 @@ class Item < ActiveRecord::Base
   has_many :item_images, dependent: :destroy
   has_many :line_items
   has_many :favorites
+  has_many :reviews, :through => :shop
   
   delegate :name, :city, :state, :image, :to => :shop, :prefix => true
   
@@ -30,10 +31,14 @@ class Item < ActiveRecord::Base
   
   def self.text_search(query)
     if query.present?
-      where("title @@ :q or description @@ :q", q: query)
+      where("title @@ :q or description @@ :q", q: query).where('status = ?', "Available")
     else
-      scoped
+      scoped.where('status = ?', "Available")
     end
+  end
+  
+  def other_items_from_this_shop
+    shop.items.where('id != ? AND status = ?', self.id, "Available").limit(3)
   end
   
   def my_favorite?(user)
