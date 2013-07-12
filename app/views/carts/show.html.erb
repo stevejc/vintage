@@ -9,18 +9,11 @@
     <div class="cart_order">
       <div class="cart_order_header">
         <p>Your order with: <%= cart_order.shop.name %></p>
-        <%= link_to (content_tag(:i, "", :class=>"icon-remove")), cart_order_path(cart_order), method: :delete, data: {confirm: "Are you sure you want to delete your order?" }, :class => 'float_right' %>  
+        <%= link_to (content_tag(:i, "", :class=>"icon-remove")), cart_order_path(cart_order), method: :delete, data: {confirm: "Are you sure you want to delete your order?" }, :class => 'right' %>  
       </div>
 
       <table>
-        <% cart_order.line_items.each do |line_item| %>
-          <tr>
-            <td><%= line_item.quantity %> &times; </td>
-            <td><%= line_item.item.title %></td>
-            <td><%= number_to_currency(line_item.total_price) %></td>
-            <td><%= link_to 'Remove Item', line_item, method: :delete, data: {confirm: "Are you sure?" }, :class => 'btn' %></td>
-          </tr>
-        <% end %> 
+        <%= render :partial => 'line_item', :collection => cart_order.line_items %> 
         <tr>
           <td colspan="2">Total</td>
           <td><%= number_to_currency(cart_order.total_price) %></td>
