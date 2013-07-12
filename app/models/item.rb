@@ -14,7 +14,7 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :description, :price, :quantity, :shop_id, :status, :title
+  attr_accessible :description, :price, :quantity, :status, :title
   scope :available, where(:status => "Available")
   
   belongs_to :shop
