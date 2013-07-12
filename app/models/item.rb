@@ -26,6 +26,7 @@ class Item < ActiveRecord::Base
   delegate :name, :city, :state, :image, :to => :shop, :prefix => true
   
   before_create :update_item_status_to_pending
+  before_update :check_quantity
   
   validates :shop_id,  presence: true
   validates :quantity, :title, :description, :price, presence: true
@@ -57,6 +58,10 @@ class Item < ActiveRecord::Base
     
     def update_item_status_to_pending
       self.status = "Pending"
+    end
+    
+    def check_quantity
+      self.status = "Pending" if self.quantity == 0 && self.status = "Available"
     end
   
   
