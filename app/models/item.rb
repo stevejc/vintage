@@ -15,6 +15,7 @@
 
 class Item < ActiveRecord::Base
   attr_accessible :description, :price, :quantity, :shop_id, :status, :title
+  scope :available, where(:status => "Available")
   
   belongs_to :shop
   has_many :item_images, dependent: :destroy
@@ -31,9 +32,9 @@ class Item < ActiveRecord::Base
   
   def self.text_search(query)
     if query.present?
-      where("title @@ :q or description @@ :q", q: query).where('status = ?', "Available")
+      where("title @@ :q or description @@ :q", q: query).available
     else
-      scoped.where('status = ?', "Available")
+      scoped.available
     end
   end
   
