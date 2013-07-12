@@ -34,7 +34,7 @@
               </div>     
             </div>
             <div><%= link_to item.title, item_path(item) %></div>
-            <%= link_to item.shop.name, shop_path(item.shop) %>   
+            <%= link_to item.shop_name, shop_path(item.shop) %>   
             <span class="right"><%= number_to_currency(item.price) %></span> 
           </li>
         <% end %>

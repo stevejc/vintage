@@ -54,14 +54,14 @@
     
     <div id="item-shop" class="pagination-centered">
       <h4>Verified Home Shop-Owner</h4>
-      <%= image_tag @item.shop.image.thumb, { :class=>"shop_image"} %>
-      <h4><%= @item.shop.name %></h4>
-      <p><%= @item.shop.city %>, <%= @item.shop.state %></p>
+      <%= image_tag @item.shop_image.thumb, { :class=>"shop_image"} %>
+      <h4><%= @item.shop_name %></h4>
+      <p><%= @item.shop_city %>, <%= @item.shop_state %></p>
       <%= link_to 'View Store', shop_path(@item.shop), :class => 'btn' %>
     </div>
     
     <div id="item-shop-other-items">
-      <h4 class="pagination-centered">Other Great Items from <%= @item.shop.name %>:</h4>
+      <h4 class="pagination-centered">Other Great Items from <%= @item.shop_name %>:</h4>
       <ul>
         <% @items.each do |item| %>
           <li>
@@ -71,7 +71,7 @@
         <% end %>
       </ul>
       <% if @items_count > 3 %>
-        <p><%= link_to "See more items from #{@item.shop.name}", @item.shop %></p>
+        <p><%= link_to "See more items from #{@item.shop_name}", @item.shop %></p>
       <% end %>
     </div>
   </div>

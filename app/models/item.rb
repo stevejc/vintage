@@ -21,6 +21,8 @@ class Item < ActiveRecord::Base
   has_many :line_items
   has_many :favorites
   
+  delegate :name, :city, :state, :image, :to => :shop, :prefix => true
+  
   before_create :update_item_status_to_pending
   
   validates :shop_id,  presence: true
