@@ -11,6 +11,7 @@ Vintage::Application.routes.draw do
   match '/youritem/:id' => 'items#youritem', :as => :youritem
   match '/youritems' => 'items#youritems'
   match '/list_for_sale/:id' => 'items#list_for_sale', :as => :list_for_sale
+  match '/remove_from_sale/:id' => 'items#remove_from_sale', :as => :remove_from_sale
   
   resources :item_images do
     collection { post :sort }

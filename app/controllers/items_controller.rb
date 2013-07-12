@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :youritems, :youritem, :edit, :update, :list_for_sale ]
-  before_filter :correct_user, only: [:youritem, :edit, :update, :list_for_sale]
+  before_filter :correct_user, only: [:youritem, :edit, :update, :list_for_sale, :remove_from_sale]
   
   def new
     @item = Item.new
@@ -51,6 +51,11 @@ class ItemsController < ApplicationController
   def list_for_sale
     @item.update_status_to_available
     redirect_to youritem_path(@item), notice: 'Your item is now listed for sale.'
+  end
+  
+  def remove_from_sale
+    @item.update_status_to_pending
+    redirect_to youritem_path(@item), notice: 'Your item is no longer for sale.'
   end
   
   private

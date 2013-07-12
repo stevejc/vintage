@@ -54,6 +54,11 @@ class Item < ActiveRecord::Base
     end
   end
   
+  def update_status_to_pending
+    self.status = "Pending"
+    self.save
+  end
+  
   private
     
     def update_item_status_to_pending

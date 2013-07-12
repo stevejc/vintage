@@ -46,11 +46,14 @@ module ItemsHelper
         content_tag(:h5, "Set-up your shop to accept credit cards with Stripe?", class: "inline") if !item.shop.stripe_shop_token?) )) +
         (if item.item_images.exists? && item.shop.stripe_shop_token? && item.quantity > 0
           link_to(list_for_sale_path(item), class: "btn") do
-            "list for sale"
+            "List for sale"
           end
         end)
       elsif item.status == "Available"
-        content_tag(:p,"Your item is listed for sale on HomePlace. If your item is no longer for sale please update the status to pending or change the quantity available to zero.")
+        content_tag(:p,"Your item is listed for sale on HomePlace. If your item is no longer for sale please update the status to pending or change the quantity available to zero.") +
+        link_to(remove_from_sale_path(item), class: "btn") do
+          "Remove from sale"
+        end
       else
         content_tag(:p, "Your item is not available for sale because the quantity available is zero. If you still have items available please update the quantity and change the status to Available.")
       end    
