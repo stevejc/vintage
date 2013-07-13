@@ -1,7 +1,12 @@
 <h1>Your Shop Item</h1>
-
-<%= display_item_status(@item) %>
-
+ 
+<div id="item-status" class="<%= display_status(@item) %>">
+ <h3>Status: <%= @item.status %></h3>
+ <%= display_message(@item) %>
+ <%= display_reasons(@item) %>
+ <%= display_action_button(@item) %>
+</div>
+ 
 <table class="table">
   <tr>
     <td><b>Item:</b></td>

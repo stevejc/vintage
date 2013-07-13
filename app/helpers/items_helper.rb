@@ -19,7 +19,7 @@ module ItemsHelper
     end
   end
   
-  def display_item_status(item) 
+  def display_status(item) 
     cc = case item.status
     when "Pending" 
       "alert-error"
@@ -27,36 +27,45 @@ module ItemsHelper
       "alert-success"
     else 
       "alert-info"
-    end 
-    
-    content_tag(:div, 
-    (content_tag(:h3, "Status: #{item.status}") + 
-      if item.status == "Pending"
-        content_tag(:p, "Your item is not yet listed for sale on HomePlace. Every item listed for sales requires at least one image, at least a quantity of 1 item available if your item is ready to go update the status to Available.") + 
-        (content_tag(:div,
-        (content_tag(:i, " ", class: "icon-ok") + 
-        content_tag(:h5, "Add at least 1 image!", class: "inline") if !item.item_images.exists?) )) + 
-        
-        (content_tag(:div,
-        (content_tag(:i, " ", class: "icon-ok") + 
-        content_tag(:h5, "Add Quantity Available!", class: "inline") if item.quantity == 0) )) +
-         
-        (content_tag(:div,
-        (content_tag(:i, " ", class: "icon-ok") + 
-        content_tag(:h5, "Set-up your shop to accept credit cards with Stripe?", class: "inline") if !item.shop.stripe_shop_token?) )) +
-        (if item.item_images.exists? && item.shop.stripe_shop_token? && item.quantity > 0
-          link_to(list_for_sale_path(item), class: "btn") do
-            "List for sale"
-          end
-        end)
-      elsif item.status == "Available"
-        content_tag(:p,"Your item is listed for sale on HomePlace. If your item is no longer for sale please update the status to pending or change the quantity available to zero.") +
-        link_to(remove_from_sale_path(item), class: "btn") do
-          "Remove from sale"
-        end
-      else
-        content_tag(:p, "Your item is not available for sale because the quantity available is zero. If you still have items available please update the quantity and change the status to Available.")
-      end    
-    ), id:"item-status", class: "#{cc}")
+    end
   end
+  
+  def display_message(item)
+    message = case item.status
+    when "Pending" 
+      "Your item is not yet listed for sale on HomePlace. Every item listed for sales requires at least one image, at least a quantity of 1 item available if your item is ready to go update the status to Available."
+    when "Available"
+      "Your item is listed for sale on HomePlace. If your item is no longer for sale please update the status to pending or change the quantity available to zero."
+    else 
+      "Your item is not available for sale because the quantity available is zero. If you still have items available please update the quantity and change the status to Available."
+    end
+    
+    content_tag :p, message
+  end
+  
+  def display_reasons(item)
+    (content_tag(:div,
+      (content_tag(:i, " ", class: "icon-ok") + 
+      content_tag(:h5, "Add at least 1 image!", class: "inline") if !item.item_images.exists?) )) + 
+    (content_tag(:div,
+      (content_tag(:i, " ", class: "icon-ok") + 
+      content_tag(:h5, "Add Quantity Available!", class: "inline") if item.quantity == 0) )) +        
+    (content_tag(:div,
+      (content_tag(:i, " ", class: "icon-ok") + 
+      content_tag(:h5, "Set-up your shop to accept credit cards with Stripe?", class: "inline") if !item.shop.stripe_shop_token?) ))
+    
+  end
+  
+  def display_action_button(item)
+    if item.status == "Available"
+      link_to "Remove from sale", remove_from_sale_path(item), class: "btn"
+    elsif ready_to_list(item)
+      link_to "List for sale", list_for_sale_path(item), class: "btn"
+    end
+  end
+  
+  def ready_to_list(item)
+    item.item_images.exists? && item.shop.stripe_shop_token? && item.quantity > 0
+  end
+  
 end
