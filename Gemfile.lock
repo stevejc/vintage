@@ -108,6 +108,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.1)
+    newrelic_rpm (3.6.6.147)
     nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -207,6 +208,7 @@ DEPENDENCIES
   less-rails
   meta_request
   mini_magick
+  newrelic_rpm
   omniauth-stripe-connect
   pg
   rails (= 3.2.13)
