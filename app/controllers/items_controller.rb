@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :signed_in_user, only: [:new, :create, :youritems, :youritem, :edit, :update, :list_for_sale ]
+
   before_filter :correct_user, only: [:youritem, :edit, :update, :list_for_sale, :remove_from_sale]
   
   def new

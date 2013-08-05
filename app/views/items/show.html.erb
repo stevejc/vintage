@@ -54,7 +54,10 @@
     
     <div id="item-shop" class="pagination-centered">
       <h4>Verified Home Shop-Owner</h4>
-      <%= image_tag @item.shop_image.thumb, { :class=>"shop_image"} %>
+
+        <%= (image_tag @item.shop_image.thumb, { :class=>"shop_image"}) if @item.shop.image?  %>
+
+      
       <h4><%= @item.shop_name %></h4>
       <p><%= @item.shop_city %>, <%= @item.shop_state %></p>
       <%= link_to 'View Store', shop_path(@item.shop), :class => 'btn' %>

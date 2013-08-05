@@ -13,12 +13,12 @@
     				<li><%= render "layouts/item-search" %></li>
   			</ul>	
   			<ul class="nav pull-right">
-  			  <% if signed_in? %>
+  			  <% if user_signed_in? %>
   			    <li id="fat-menu" class="dropdown">
       			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Profile <b class="caret"></b></a>
     			    <ul class="dropdown-menu">
-                <li><%= link_to "Your Profile", current_user %></li>
+                <li><%= link_to "Your Profile", edit_user_registration_path %></li>
                 <li><%= link_to "Your Orders", yourorders_path %></li> 
                 <li><%= link_to "Your Favorites", yourfavorites_path %></li> 			    
     			    </ul>
@@ -36,10 +36,10 @@
     			  <% else %>
         			  <li><%= link_to "Create a Store", new_shop_path %></li>
   			    <% end %> 			    
-  			    <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
+  			    <li><%= link_to "Sign Out", destroy_user_session_path, method: "delete" %></li>
   			  <% else %>
-    			  <li><%= link_to "Register", signup_path %></li>
-    			  <li><%= link_to "Sign In", signin_path %></li>
+    			  <li><%= link_to "Register", new_user_registration_path %></li>
+    			  <li><%= link_to "Sign In", new_user_session_path %></li>
   			  <% end %>	
   			  <% if session[:cart_id] != nil%>			  	
   				  <li><%= link_to (content_tag(:i, "", :class=>"icon-shopping-cart")) + " Cart", yourcart_path %></li>

@@ -33,7 +33,7 @@
       <%= link_to 'Cancel', yourshop_path, :class => 'btn' %>
     <% else %>
       <%= f.submit "Set Up Your Shop", class: "btn btn-warning" %>
-      <%= link_to 'Cancel', users_path(current_user), :class => 'btn' %>
+      <%= link_to 'Cancel', :back, :class => 'btn' %>
     <% end %>
   </div>
 <% end %>

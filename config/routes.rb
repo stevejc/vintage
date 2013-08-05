@@ -1,4 +1,6 @@
 Vintage::Application.routes.draw do
+  devise_for :users
+
   resources :carts
   match '/yourcart' => 'carts#show'
   
@@ -29,24 +31,14 @@ Vintage::Application.routes.draw do
   match '/shipmentdetails/:id' => 'orders#updateshipping', :as => :shipment, via: :put
   match '/billcustomer/:id' => 'orders#bill_customer', :as => :bill_customer
   
-  resources :password_resets
-  
   resources :reviews
-  
-  resources :sessions, only: [:new, :create, :destroy]
-  match '/signin' => 'sessions#new'
-  match '/signout' => 'sessions#destroy', via: :delete
-  
+ 
   resources :shipping_addresses
   
   resources :shops
   match '/yourshop' => 'shops#yourshop'
   match '/yourshop/edit' => 'shops#edit', :as => :edit_yourshop
   match'/yourshop/stripe' => 'shops#stripe'
-  
-  resources :users
-  match '/signup' => 'users#new'
-  match '/password' => 'users#password', :as => :password
     
   root to: 'home#index'
   

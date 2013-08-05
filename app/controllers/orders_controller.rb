@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :signed_in_user
+
   before_filter :correct_shop, only: [:yourshoporder, :updateshipping, :bill_customer, :shipment_details]
   
   
